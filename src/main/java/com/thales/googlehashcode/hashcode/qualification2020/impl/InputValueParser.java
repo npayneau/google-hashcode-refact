@@ -1,11 +1,9 @@
 package com.thales.googlehashcode.hashcode.qualification2020.impl;
 
-import com.thales.googlehashcode.hashcode.qualification2020.model.Ride;
-import com.thales.googlehashcode.hashcode.qualification2020.model.Vehicule;
-import com.thales.googlehashcode.common.model.geometry.Coord;
 import com.thales.googlehashcode.hashcode.common.HashCodeInputValueParser;
-import com.thales.googlehashcode.hashcode.qualification2020.model.Grid;
+import com.thales.googlehashcode.hashcode.qualification2020.model.Book;
 import com.thales.googlehashcode.hashcode.qualification2020.model.InputValue;
+import com.thales.googlehashcode.hashcode.qualification2020.model.Library;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,39 +14,27 @@ public class InputValueParser implements HashCodeInputValueParser<InputValue> {
     @Override
     public InputValue parse(Scanner scanner) {
         final String[] firstLine = scanner.nextLine().split(" ");
-        final int rowCount = Integer.parseInt(firstLine[0]);
-        final int columnCount = Integer.parseInt(firstLine[1]);
-        final int vehiculeCount = Integer.parseInt(firstLine[2]);
-        final int rideCount = Integer.parseInt(firstLine[3]);
-        final int bonus = Integer.parseInt(firstLine[4]);
-        final int stepCount = Integer.parseInt(firstLine[5]);
+        final int nbBooks = Integer.parseInt(firstLine[0]);
+        final int nbLibraries = Integer.parseInt(firstLine[1]);
+        final int nbDay = Integer.parseInt(firstLine[2]);
 
-        final List<Vehicule> vehicules = new ArrayList<>(vehiculeCount);
+        final String[] booksScore = scanner.nextLine().split(" ");
 
-        for (int i = 0; i < vehiculeCount; i++) {
-            vehicules.add(new Vehicule(i));
-        }
+        final List<Library> libraries = new ArrayList<>(nbLibraries);
 
-        final List<Ride> rides = new ArrayList<>(rideCount);
-
-        for (int rideIndex = 0; rideIndex < rideCount; rideIndex++) {
+        for (int i = 0; i < nbLibraries; i++) {
             final String[] rideLine = scanner.nextLine().split(" ");
-            final int rowStart = Integer.parseInt(rideLine[0]);
-            final int columnStart = Integer.parseInt(rideLine[1]);
-            final int rowFinish = Integer.parseInt(rideLine[2]);
-            final int columnFinish = Integer.parseInt(rideLine[3]);
-            final int earliestStart = Integer.parseInt(rideLine[4]);
-            final int latestFinish = Integer.parseInt(rideLine[5]);
-
-            final Coord start = new Coord(columnStart, rowStart);
-            final Coord end = new Coord(columnFinish, rowFinish);
-            final Ride ride = new Ride(rideIndex, start, end, earliestStart, latestFinish);
-
-            rides.add(ride);
+            final int nbBooksLib = Integer.parseInt(rideLine[0]);
+            final int signupProcess = Integer.parseInt(rideLine[1]);
+            final int nbShipPerDay = Integer.parseInt(rideLine[2]);
+            final String[] booksId = scanner.nextLine().split(" ");
+            List<Book> books = new ArrayList<>();
+            for (int j = 0; j < nbBooksLib; j++) {
+                books.add(new Book(Integer.parseInt(booksScore[Integer.parseInt(booksId[j])])));
+            }
+            libraries.add(new Library(books, nbBooksLib, signupProcess, nbShipPerDay));
         }
 
-        final Grid grid = new Grid(rowCount, columnCount);
-
-        return new InputValue(vehicules, rides, grid, bonus, stepCount);
+        return new InputValue(nbBooks, libraries, nbDay);
     }
 }

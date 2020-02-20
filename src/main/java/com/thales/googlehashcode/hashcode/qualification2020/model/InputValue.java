@@ -1,32 +1,26 @@
 package com.thales.googlehashcode.hashcode.qualification2020.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class InputValue {
 
-    public final List<Vehicule> vehicules;
-    public final List<Ride> rides;
-    public final Grid grid;
-    public final int bonus;
-    public final int stepCount;
+    public final int nbBooks;
+    public final List<Library> libraries;
+    public final int days;
 
-    public InputValue(List<Vehicule> vehicules, List<Ride> rides, Grid grid, int bonus, int stepCount) {
-        this.vehicules = new ArrayList<>(vehicules);
-        this.rides = new ArrayList<>(rides);
-        this.grid = grid;
-        this.bonus = bonus;
-        this.stepCount = stepCount;
+    public InputValue(int nbBooks, List<Library> libraries, int days) {
+        this.nbBooks = nbBooks;
+        this.libraries = libraries;
+        this.days = days;
+
     }
 
     @Override
     public String toString() {
         return "InputValue{" +
-                "vehicules=" + vehicules.size() +
-                ", rides=" + rides.size() +
-                ", grid=" + grid +
-                ", bonus=" + bonus +
-                ", stepCount=" + stepCount +
+                "nbBooks=" + nbBooks +
+                ", libraries=" + libraries.size() +
+                ", days=" + days +
                 '}';
     }
 }

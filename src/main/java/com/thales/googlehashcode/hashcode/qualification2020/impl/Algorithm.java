@@ -11,7 +11,7 @@ public class Algorithm implements HashCodeAlgorithm<InputValue> {
 
     @Override
     public HashCodeSolution run(InputValue input, HashCodeLogger logger) {
-
+        System.out.println(input.toString());
         return new HashCodeSolution(new ArrayList<>(), 50);
     }
 }
