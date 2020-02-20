@@ -1,7 +1,10 @@
 package com.thales.googlehashcode.hashcode.qualification2020.model;
 
+import lombok.Data;
+
 import java.util.List;
 
+@Data
 public class InputValue {
 
     public final int nbBooks;

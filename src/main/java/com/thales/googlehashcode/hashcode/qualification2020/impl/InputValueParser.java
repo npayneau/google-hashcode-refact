@@ -30,9 +30,9 @@ public class InputValueParser implements HashCodeInputValueParser<InputValue> {
             final String[] booksId = scanner.nextLine().split(" ");
             List<Book> books = new ArrayList<>();
             for (int j = 0; j < nbBooksLib; j++) {
-                books.add(new Book(Integer.parseInt(booksScore[Integer.parseInt(booksId[j])])));
+                books.add(new Book(Integer.parseInt(booksId[j]), Integer.parseInt(booksScore[Integer.parseInt(booksId[j])])));
             }
-            libraries.add(new Library(books, nbBooksLib, signupProcess, nbShipPerDay));
+            libraries.add(new Library(i, books, nbBooksLib, signupProcess, nbShipPerDay));
         }
 
         return new InputValue(nbBooks, libraries, nbDay);
