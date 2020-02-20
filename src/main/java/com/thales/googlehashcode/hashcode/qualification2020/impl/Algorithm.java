@@ -16,7 +16,7 @@ public class Algorithm implements HashCodeAlgorithm<InputValue> {
 
     @Override
     public HashCodeSolution run(InputValue input, HashCodeLogger logger) {
-        List<Library> sortedLibrary = input.getLibraries().stream().sorted(Comparator.comparing(Library::getRatio)).collect(Collectors.toList());
+        List<Library> sortedLibrary = input.getLibraries().stream().sorted(Comparator.comparing(Library::getRatio).reversed()).collect(Collectors.toList());
         int libraryProceed = 0;
         List<Library> libraryProceedList = new ArrayList<>();
         List<Library> libraryOut = new ArrayList<>();
@@ -24,14 +24,16 @@ public class Algorithm implements HashCodeAlgorithm<InputValue> {
         int signupProcess = 0;
         for (int i = 0; i < input.getDays(); i++) {
             if (signupProcess == 0) {
-                if (librarySignup != null) {
+                if (librarySignup != null && input.getLibraries().size() > libraryOut.size()) {
                     libraryProceedList.add(librarySignup);
                     libraryOut.add(librarySignup);
                     libraryProceed++;
                 }
-                librarySignup = sortedLibrary.get(libraryProceed);
-                librarySignup.sortedBooks();
-                signupProcess = librarySignup.getSignupProcess() - 1;
+                if (libraryProceed < sortedLibrary.size()) {
+                    librarySignup = sortedLibrary.get(libraryProceed);
+                    librarySignup.sortedBooks();
+                    signupProcess = librarySignup.getSignupProcess() - 1;
+                }
             } else {
                 signupProcess--;
             }

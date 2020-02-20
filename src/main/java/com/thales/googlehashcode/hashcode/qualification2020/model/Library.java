@@ -5,14 +5,13 @@ import lombok.Data;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Stack;
 import java.util.stream.Collectors;
 
 @Data
 public class Library {
 
     private final List<Book> books;
-    private Stack<Book> sortedBooks;
+    private List<Book> sortedBooks;
     private List<Book> outBooks;
     private String outBooksString;
     private final int nbBooks;
@@ -20,6 +19,7 @@ public class Library {
     private final int nbShipPerDay;
     private int bookProceedIndex;
     private boolean isProceed;
+    private Double ratio;
     private int id;
 
     public Library(int id, List<Book> books, int nbBooks, int signupProcess, int nbShipPerDay) {
@@ -30,10 +30,12 @@ public class Library {
         this.nbShipPerDay = nbShipPerDay;
         outBooks = new ArrayList<>();
         bookProceedIndex = 0;
+        outBooksString = "";
     }
 
     public Double getRatio() {
-        return (nbShipPerDay * getMedian()) / signupProcess;
+        ratio = (nbShipPerDay * getMedian()) / signupProcess;
+        return ratio;
     }
 
     private Double getMedian() {
@@ -41,20 +43,19 @@ public class Library {
     }
 
     public void sortedBooks() {
-        this.getBooks().stream().sorted(Comparator.comparing(Book::getScore)).collect(Collectors.toList());
-        sortedBooks.size();
+        sortedBooks = this.getBooks().stream().sorted(Comparator.comparing(Book::getScore).reversed()).collect(Collectors.toList());
     }
 
     public boolean proceedBooks() {
         for (int i = 0; i < nbShipPerDay; i++) {
-            Book b = this.sortedBooks.get(bookProceedIndex);
-            outBooks.add(b);
-            createOutBooksString(b);
-            bookProceedIndex++;
             if (bookProceedIndex == nbBooks) {
                 //Library is fully proceed
                 return true;
             }
+            Book b = this.sortedBooks.get(bookProceedIndex);
+            outBooks.add(b);
+            createOutBooksString(b);
+            bookProceedIndex++;
         }
         //IsProceed
         return false;
