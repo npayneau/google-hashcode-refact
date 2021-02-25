@@ -19,6 +19,10 @@ public class Intersection {
         this.incomingStreets = incomingStreets;
     }
 
+    public void setFrequencyToStreet(String streetName, Integer time){
+        incomingStreets.stream().filter(schedule -> schedule.incomingStreet.getName().equals(streetName))
+                .findFirst().get().setTime(time);
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
