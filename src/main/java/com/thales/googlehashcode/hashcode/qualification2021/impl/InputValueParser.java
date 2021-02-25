@@ -19,10 +19,10 @@ public class InputValueParser implements HashCodeInputValueParser<InputValue> {
             final String[] streetLine = scanner.nextLine().split(" ");
             final Street street = Street.builder().startingPoint(Integer.parseInt(streetLine[0])).endingPoint(Integer.parseInt(streetLine[1])).name(streetLine[2]).duration(Integer.parseInt(streetLine[3])).build();
             streets.add(street);
-            List<Schedule> scheduleOfIntersection = mapOfInterSection.get(street.getStartingPoint());
+            List<Schedule> scheduleOfIntersection = mapOfInterSection.get(street.getEndingPoint());
             if (scheduleOfIntersection == null) scheduleOfIntersection = new ArrayList<>();
             scheduleOfIntersection.add(new Schedule(street, 0));
-            mapOfInterSection.put(street.getStartingPoint(), scheduleOfIntersection);
+            mapOfInterSection.put(street.getEndingPoint(), scheduleOfIntersection);
         }
 
         intersectionList = mapOfInterSection.entrySet().stream().map(integerListEntry -> new Intersection(integerListEntry.getKey(), integerListEntry.getValue())).collect(Collectors.toSet());
