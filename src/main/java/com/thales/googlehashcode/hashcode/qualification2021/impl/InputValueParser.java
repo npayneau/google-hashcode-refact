@@ -33,7 +33,7 @@ public class InputValueParser implements HashCodeInputValueParser<InputValue> {
                 int finalJ = j;
                 streetsTmp.add(streets.stream().filter(street -> street.getName().equals(carLine[finalJ])).collect(Collectors.toList()).get(0));
             }
-            cars.add(Car.builder().streetCount(Integer.parseInt(carLine[0])).streetsToVisit(streetsTmp).build());
+            cars.add(Car.builder().streetCount(Integer.parseInt(carLine[0])).streetsToVisit(streetsTmp).totalTimePath(streetsTmp.stream().mapToInt(Street::getDuration).sum()).build());
         }
         return InputValue.builder().globalConfig(gc).allStreets(streets).cars(cars).build();
     }

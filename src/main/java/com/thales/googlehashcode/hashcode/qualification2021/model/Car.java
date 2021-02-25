@@ -11,4 +11,5 @@ public class Car {
 
     Integer streetCount;
     LinkedList<Street> streetsToVisit;
+    Integer totalTimePath;
 }
