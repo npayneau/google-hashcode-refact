@@ -8,6 +8,11 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import com.thales.googlehashcode.hashcode.qualification2021.model.InputValue;
+import com.thales.googlehashcode.hashcode.qualification2021.model.Intersection;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Algorithm implements HashCodeAlgorithm<InputValue> {
 
@@ -40,8 +45,16 @@ public class Algorithm implements HashCodeAlgorithm<InputValue> {
             System.out.println("All incoming : "+currentState);
         }
 
-
-        return null;
+        List<Intersection> intersections = new ArrayList<>();
+        //create output
+        List<String> out = new ArrayList<>();
+        out.add(String.valueOf(intersections.size()));
+        for (Intersection intersection : intersections) {
+            out.add(String.valueOf(intersection.getId()));
+            out.add(String.valueOf(intersection.getIncomingStreets().size()));
+            intersection.getIncomingStreets().forEach((street, time) -> out.add(street + " " + time));
+        }
+        return new HashCodeSolution(out, 50);
     }
 
     LinkedList<Car> findCarsFromStreet(Street street, List<Car> cars){
