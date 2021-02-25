@@ -8,23 +8,13 @@ import java.util.List;
 @Data
 public class InputValue {
 
-    public final int nbBooks;
-    public final List<Library> libraries;
-    public final int days;
+    public final GlobalConfig globalConfig;
+    public final List<Street> allStreets;
+    public final List<Car> cars;
 
-    public InputValue(int nbBooks, List<Library> libraries, int days) {
-        this.nbBooks = nbBooks;
-        this.libraries = libraries;
-        this.days = days;
-
-    }
-
-    @Override
-    public String toString() {
-        return "InputValue{" +
-                "nbBooks=" + nbBooks +
-                ", libraries=" + libraries.size() +
-                ", days=" + days +
-                '}';
+    public InputValue(GlobalConfig globalConfig, List<Street> allStreets, List<Car> cars) {
+        this.globalConfig = globalConfig;
+        this.allStreets = allStreets;
+        this.cars = cars;
     }
 }
