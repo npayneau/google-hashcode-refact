@@ -1,5 +1,6 @@
-package com.thales.googlehashcode.hashcode.qualification2021.model;
+package com.thales.googlehashcode.hashcode.qualification2021.oldmodel;
 
+import com.thales.googlehashcode.hashcode.qualification2021.oldmodel.Book;
 import lombok.Data;
 
 import java.util.ArrayList;

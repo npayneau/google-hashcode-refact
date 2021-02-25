@@ -1,9 +1,9 @@
 package com.thales.googlehashcode.hashcode.qualification2021.impl;
 
 import com.thales.googlehashcode.hashcode.common.HashCodeInputValueParser;
-import com.thales.googlehashcode.hashcode.qualification2021.model.Book;
+import com.thales.googlehashcode.hashcode.qualification2021.oldmodel.Book;
 import com.thales.googlehashcode.hashcode.qualification2021.model.InputValue;
-import com.thales.googlehashcode.hashcode.qualification2021.model.Library;
+import com.thales.googlehashcode.hashcode.qualification2021.oldmodel.Library;
 
 import java.util.ArrayList;
 import java.util.List;
