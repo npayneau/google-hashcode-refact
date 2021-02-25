@@ -9,5 +9,6 @@ import java.util.Map;
 @Data
 public class Intersection {
 
+    private int id;
     private Map<Street, Integer> incomingStreets;
 }
