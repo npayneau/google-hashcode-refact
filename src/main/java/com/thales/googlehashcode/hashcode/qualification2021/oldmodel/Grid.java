@@ -1,4 +1,4 @@
-package com.thales.googlehashcode.hashcode.qualification2021.model;
+package com.thales.googlehashcode.hashcode.qualification2021.oldmodel;
 
 public class Grid {
 
