@@ -1,10 +1,11 @@
 package com.thales.googlehashcode.hashcode.qualification2021.model;
 
-import com.thales.googlehashcode.hashcode.qualification2021.oldmodel.Library;
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
 
+@Builder
 @Data
 public class InputValue {
 

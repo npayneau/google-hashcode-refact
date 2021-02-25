@@ -1,9 +1,14 @@
 package com.thales.googlehashcode.hashcode.qualification2021.model;
 
-import java.util.List;
+import lombok.Builder;
+import lombok.Data;
 
+import java.util.LinkedList;
+
+@Builder
+@Data
 public class Car {
 
     Integer streetCount;
-    List<Street> streetsToVisit;
+    LinkedList<Street> streetsToVisit;
 }
