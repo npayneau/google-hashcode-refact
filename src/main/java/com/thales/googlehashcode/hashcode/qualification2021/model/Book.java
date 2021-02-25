@@ -1,4 +1,4 @@
-package com.thales.googlehashcode.hashcode.qualification2020.model;
+package com.thales.googlehashcode.hashcode.qualification2021.model;
 
 import lombok.Data;
 

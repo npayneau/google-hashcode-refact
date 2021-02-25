@@ -1,6 +1,6 @@
 package com.thales.googlehashcode.hashcode.common;
 
-import com.thales.googlehashcode.hashcode.qualification2020.Application;
+import com.thales.googlehashcode.hashcode.qualification2021.Application;
 
 import java.io.File;
 import java.io.IOException;
